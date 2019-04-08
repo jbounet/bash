@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+	ServerAdmin julien.bounet1@gmail.com
+	ServerName template.wrk
+	ServerAlias www.template.wrk
+
+	DocumentRoot /home/julienbounet/www/template/web
+
+	#config specifique symfony 3
+	<Directory "/home/julienbounet/www/template/web">
+		Require all granted
+		FallbackResource /app.php
+	</Directory> 
+
+	#Ne pas laisser les users web aller ailleurs dans ce dossier
+	<Directory "/home/julienbounet/www/template/web/bundles">
+		FallbackResource disabled
+	</Directory>
+
+
+</VirtualHost>
